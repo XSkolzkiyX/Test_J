@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public Transform Target;
     public Button shieldButton;
     public Material playerMat, shieldMat;
+    public Animator crossfade;
     public float speed;
     public bool shield = false;
     int curPos = 0;
@@ -78,6 +79,8 @@ public class PlayerController : MonoBehaviour
     IEnumerator Restart()
     {
         yield return new WaitForSeconds(3f);
+        crossfade.SetTrigger("End");
+        yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(0);
     }
 }
